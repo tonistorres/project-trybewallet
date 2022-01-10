@@ -23,6 +23,7 @@ class Login extends React.Component {
             <p>Senha:</p>
             <input type="password" id="campo-password" name="password" />
           </label>
+          <button type="button"> Entrar </button>
         </div>
       </div>
     );
