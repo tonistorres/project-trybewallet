@@ -37,7 +37,7 @@
 input {
   border-radius: 12px;
   height: 4.5vh;
-  width: 250px;
+  width: 220px;
 }
 
 img {
@@ -50,9 +50,9 @@ button {
   background-color: #7E57C2;
   border-radius: 12px;
   color: #333;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
   height: 5vh;
-  width: 250px;
+  width: 200px;
 }
 

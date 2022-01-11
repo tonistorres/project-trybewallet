@@ -1,0 +1,15 @@
+label {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+select {
+  border-radius: 15px;
+  font-size: 22px;
+  font-weight: 700;
+  height: 5vh;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 200px;
+}
+
