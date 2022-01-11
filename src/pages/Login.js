@@ -1,6 +1,9 @@
 import React from 'react';
 import '../App.css';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { setAddEmail } from '../actions/index';
 import perfil from '../assets/perfilLinkedin.jpeg';
 
 class Login extends React.Component {
@@ -34,11 +37,13 @@ class Login extends React.Component {
 
   handleChange({ target }) {
     const { name, value } = target;
-    console.log('name:', name, 'value:', value);
     this.setState({ [name]: value }, this.onValidatioButton);
   }
 
   handleClick() {
+    const { setDispachEmail } = this.props;
+    console.log('Estado Local:', this.state);
+    setDispachEmail(this.state);
     this.setState({ redirect: true });
   }
 
@@ -110,4 +115,12 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  setDispachEmail: (valueAndName) => dispatch(setAddEmail(valueAndName)),
+});
+
+Login.propTypes = {
+  mapDispatchToProps: PropTypes.func,
+}.isrequired;
+
+export default connect(null, mapDispatchToProps)(Login);
