@@ -5,8 +5,19 @@ import perfil from '../assets/perfilLinkedin.jpeg';
 import '../index.css';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.sumExpenses = this.sumExpenses.bind(this);
+  }
+
+  sumExpenses(expenses) {
+    return expenses.reduce((total, { valor, exchangeRates, moeda }) => (
+      total + Number(valor) * Number(exchangeRates[moeda].ask)
+    ), 0);
+  }
+
   render() {
-    const { email } = this.props;
+    const { email, expenses } = this.props;
     return (
       <header className="wallet-container-header">
         <div className="wallet-container-imagem">
@@ -42,7 +53,9 @@ class Header extends Component {
           <div>
             <span>
               Despesa Total: R$
-              <strong data-testid="total-field"> 0 </strong>
+              <strong data-testid="total-field">
+                { this.sumExpenses(expenses).toFixed(2) }
+              </strong>
               <strong data-testid="header-currency-field"> BRL </strong>
             </span>
           </div>
@@ -54,6 +67,7 @@ class Header extends Component {
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
+  expenses: state.wallet.expenses,
 });
 
 Header.propTypes = {

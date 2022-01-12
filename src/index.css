@@ -69,3 +69,10 @@ span {
   margin-left: 5px;
   margin-right: 5px;
 }
+
+input {
+  color: orangered;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}

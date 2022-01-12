@@ -42,7 +42,6 @@ class Login extends React.Component {
 
   handleClick() {
     const { setDispachEmail } = this.props;
-    console.log('Estado Local:', this.state);
     setDispachEmail(this.state);
     this.setState({ redirect: true });
   }
