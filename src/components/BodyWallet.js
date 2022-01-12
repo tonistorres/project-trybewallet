@@ -5,7 +5,6 @@ import getCurrency from '../services/moedasAPI';
 import { setExpense } from '../actions/index';
 
 import Select from './Select';
-import Button from './Button';
 import '../index.css';
 
 class BodyWallet extends Component {
@@ -13,13 +12,13 @@ class BodyWallet extends Component {
     super(props);
     this.state = {
       id: 0,
-      valor: '',
-      moeda: 'USD',
-      forma: 'Dinheiro',
+      value: '',
+      currency: 'USD',
+      method: 'Dinheiro',
       tag: 'Alimentação',
-      descricao: '',
-      cambio: 0,
-      vlconvertido: 0,
+      description: '',
+      // cambio: 0,
+      // vlconvertido: 0,
       keys: [],
       moedaDeconversao: 0,
     };
@@ -49,119 +48,121 @@ class BodyWallet extends Component {
     const { setDispachExpense } = this.props;
     const {
       id,
-      valor,
-      descricao,
-      moeda,
-      forma,
+      value,
+      description,
+      currency,
+      method,
       tag,
-      cambio,
-      vlconvertido,
-      moedaDeconversao,
+      // cambio,
+      // vlconvertido,
+      // moedaDeconversao,
     } = this.state;
 
     const exchangeRates = await getCurrency();
 
     setDispachExpense({
       id,
-      valor,
-      descricao,
-      moeda,
-      forma,
+      value,
+      description,
+      currency,
+      method,
       tag,
-      cambio,
-      vlconvertido,
-      moedaDeconversao,
+      // cambio,
+      // vlconvertido,
+      // moedaDeconversao,
       exchangeRates,
     });
     // fazer Auto Increment do id
     this.setState((stateAnterior) => ({
       id: stateAnterior.id + 1,
-      valor: '',
-      descricao: '',
+      value: '',
+      description: '',
     }));
   }
 
   render() {
     const {
-      valor,
-      moeda,
-      forma,
+      value,
+      description,
+      currency,
+      method,
       tag,
-      descricao,
       keys,
       exchangeRates,
       moedaDeconversao,
     } = this.state;
     console.log('Api excahgeRates no Render:', exchangeRates, moedaDeconversao);
     const bancoFormas = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
-    const bancoTags = ['Alimentação', 'Lazer', 'Trabalho', 'Saúde'];
+    const bancoTags = ['Alimentação', 'Lazer', 'Trabalho', 'Saúde', 'Transporte'];
     return (
       <div>
         <form className="body-wallet-container-form">
-          <label htmlFor="valor">
+          <label htmlFor="value">
             <span>Valor:</span>
             <input
               type="text"
-              id="valor"
-              name="valor"
-              value={ valor }
+              id="value"
+              name="value"
+              value={ value }
               data-testid="value-input"
               onChange={ this.handleChange }
             />
           </label>
-          <span>Moeda:</span>
-          <select
-            id="moeda"
-            name="moeda"
-            value={ moeda }
-            data-testid="currency-input"
-            onChange={ this.handleChange }
-          >
-            {keys
-              .filter((sigla) => sigla !== 'USDT')
-              .map((sigla) => (
-                <option key={ sigla } value={ `${[sigla]}` } data-testid={ [sigla] }>
-                  {sigla}
-                </option>
-              ))}
-          </select>
-
+          <label htmlFor="currency">
+            <span>Moeda:</span>
+            <select
+              id="currency"
+              name="currency"
+              value={ currency }
+              data-testid="currency-input"
+              onChange={ this.handleChange }
+            >
+              {keys
+                .filter((sigla) => sigla !== 'USDT')
+                .map((sigla) => (
+                  <option key={ sigla } value={ sigla } data-testid={ sigla }>
+                    {sigla}
+                  </option>
+                ))}
+            </select>
+          </label>
           <span>Forma Pagamento:</span>
           <Select
             defaultOption="Selecione"
-            id="formas"
-            name="forma"
-            value={ forma }
+            id="method"
+            name="method"
+            value={ method }
             options={ bancoFormas }
-            data-testid="method-input"
+            testeId="method-input"
             onChange={ this.handleChange }
           />
-          <span>Tag:</span>
           <Select
+            label="Tag"
             defaultOption="Selecione"
             id="tags"
             name="tag"
             value={ tag }
             options={ bancoTags }
-            data-testid="tag-input"
+            testeId="tag-input"
             onChange={ this.handleChange }
           />
-          <label htmlFor="descricao">
+          <label htmlFor="description">
             <span>Descrição:</span>
             <input
               type="text"
-              id="descriacao"
-              name="descricao"
-              value={ descricao }
+              id="description"
+              name="description"
+              value={ description }
               data-testid="description-input"
               onChange={ this.handleChange }
             />
           </label>
-          <Button
+          <button
             type="button"
-            label="Adicionar despesa"
             onClick={ this.handleClick }
-          />
+          >
+            Adicionar despesa
+          </button>
         </form>
       </div>
     );

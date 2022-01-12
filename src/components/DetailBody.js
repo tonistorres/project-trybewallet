@@ -12,7 +12,7 @@ class DetailBody extends Component {
           <div>
             <table>
               <tr>
-                <th>Descricão</th>
+                <th>Descrição</th>
                 <th>Tag</th>
                 <th>Método de pagamento</th>
                 <th>Valor</th>
@@ -25,23 +25,22 @@ class DetailBody extends Component {
               {
                 dadosDespesas.map((
                   {
-                    id,
-                    descricao,
+                    description,
                     tag,
-                    forma,
-                    valor,
-                    moeda,
+                    method,
+                    value,
+                    currency,
                     cambio,
                     vlconvertido,
                     moedaDeconversao,
-                  },
+                  }, index,
                 ) => (
-                  <tr key={ id }>
-                    <td>{ descricao }</td>
+                  <tr key={ index }>
+                    <td>{ description }</td>
                     <td>{ tag }</td>
-                    <td>{ forma }</td>
-                    <td>{ valor }</td>
-                    <td>{ moeda }</td>
+                    <td>{ method }</td>
+                    <td>{ value }</td>
+                    <td>{ currency }</td>
                     <td>{ cambio }</td>
                     <td>{ vlconvertido }</td>
                     <td>{ moedaDeconversao }</td>

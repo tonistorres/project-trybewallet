@@ -13,9 +13,10 @@ class Select extends Component {
       defaultOption,
       defaultValue,
       options,
+      testeId,
     } = this.props;
     return (
-      <label htmlFor={ name }>
+      <label htmlFor={ id }>
         { label }
         <select
           name={ name }
@@ -23,6 +24,7 @@ class Select extends Component {
           required
           onChange={ onChange }
           value={ value }
+          data-testid={ testeId }
         >
           <option value={ defaultValue }>{ defaultOption }</option>
           {
@@ -42,6 +44,7 @@ Select.propTypes = {
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+  testeId: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.string,
   ).isRequired,

@@ -11,8 +11,8 @@ class Header extends Component {
   }
 
   sumExpenses(expenses) {
-    return expenses.reduce((total, { valor, exchangeRates, moeda }) => (
-      total + Number(valor) * Number(exchangeRates[moeda].ask)
+    return expenses.reduce((total, { value, exchangeRates, currency }) => (
+      total + Number(value) * Number(exchangeRates[currency].ask)
     ), 0);
   }
 
