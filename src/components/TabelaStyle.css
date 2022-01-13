@@ -32,3 +32,9 @@ td {
 tr {
   background-color: #ffff80;
 }
+
+.container-buttons-edit-excluir {
+  align-items: center;
+  display: flex;
+  width: 250px;
+}

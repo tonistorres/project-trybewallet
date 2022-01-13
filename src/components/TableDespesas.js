@@ -1,3 +1,7 @@
+// Contribuição: Gabreiel Pinheiro
+// Assunto:Hofs e Buscar Info na Estrutura do Objeto
+// Dentro da Store
+
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -47,7 +51,7 @@ class Table extends Component {
                     <td>{(value * Number(searchObject.ask)).toFixed(2)}</td>
                     <td>{searchObject.name.split('/')[1]}</td>
                     <td>Real</td>
-                    <td>
+                    <td className="container-buttons-edit-excluir">
                       <button type="button">EDIT</button>
                       <button type="button">X</button>
                     </td>
