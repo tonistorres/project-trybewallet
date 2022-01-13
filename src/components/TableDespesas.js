@@ -1,6 +1,8 @@
-// Contribuição: Gabreiel Pinheiro
+// Contribuição 1: Gabreiel Pinheiro
 // Assunto:Hofs e Buscar Info na Estrutura do Objeto
 // Dentro da Store
+// Contribuição 2: Ary Barbosa me ajudou em um bug que
+// deu na ferramenta DevTools Extenção do chome.
 
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
