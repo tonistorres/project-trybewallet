@@ -1,5 +1,5 @@
 ![](/src/trybew.png)
-## Módulo Front-End: Projeto Solar System:
+## Módulo Front-End: Projeto Trybe Wallet:
 ### Habilidades:
 
 - [x] - Criar um store Redux em aplicações React
